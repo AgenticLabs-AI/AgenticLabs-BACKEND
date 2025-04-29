@@ -54,7 +54,7 @@ async def get_products():
 @app.get("/get/products/{product_id}")
 async def get_product_by_id(product_id: int):
     try:
-        response = supabase.table("products").select("*").eq("id", product_id).execute()
+        response = supabase.table("products").select("*").eq("uuid", product_id).execute()
         if response.data:
             return response.data[0]
         else:
