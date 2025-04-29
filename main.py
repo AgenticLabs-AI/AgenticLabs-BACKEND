@@ -52,7 +52,7 @@ async def get_products():
         raise HTTPException(status_code=500, detail="Failed to fetch data")
     
 @app.get("/get/products/{product_id}")
-async def get_product_by_id(product_id: int):
+async def get_product_by_id(product_id: str):
     try:
         response = supabase.table("products").select("*").eq("uuid", product_id).execute()
         if response.data:
